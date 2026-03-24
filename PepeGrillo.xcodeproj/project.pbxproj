@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A00000000000000000000001 /* PepeGrilloMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000101 /* PepeGrilloMVPApp.swift */; };
+		A00000000000000000000002 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000102 /* RootView.swift */; };
+		A00000000000000000000003 /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000103 /* GoalSetupView.swift */; };
+		A00000000000000000000004 /* LiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000104 /* LiveSessionView.swift */; };
+		A00000000000000000000005 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000105 /* SummaryView.swift */; };
+		A00000000000000000000006 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000106 /* SessionViewModel.swift */; };
+		A00000000000000000000007 /* SessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000107 /* SessionModels.swift */; };
+		A00000000000000000000008 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000108 /* SettingsModels.swift */; };
+		A00000000000000000000009 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000109 /* SpeechRecognizer.swift */; };
+		A0000000000000000000000A /* TTSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010A /* TTSManager.swift */; };
+		A0000000000000000000000B /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010B /* OpenAIClient.swift */; };
+		A0000000000000000000000C /* CoachEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010C /* CoachEngine.swift */; };
+		A0000000000000000000000D /* DiscreetCueDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010D /* DiscreetCueDetector.swift */; };
+		A0000000000000000000000E /* LanguageDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010E /* LanguageDetector.swift */; };
+		A0000000000000000000000F /* PeopleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000010F /* PeopleStore.swift */; };
+		// (removed) Info.plist should not be in Copy Bundle Resources
+		A00000000000000000000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000202 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A00000000000000000001000 /* PepeGrillo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PepeGrillo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		A00000000000000000000101 /* PepeGrilloMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PepeGrilloMVPApp.swift; sourceTree = "<group>"; };
+		A00000000000000000000102 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A00000000000000000000103 /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
+		A00000000000000000000104 /* LiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionView.swift; sourceTree = "<group>"; };
+		A00000000000000000000105 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		A00000000000000000000106 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		A00000000000000000000107 /* SessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModels.swift; sourceTree = "<group>"; };
+		A00000000000000000000108 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		A00000000000000000000109 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		A0000000000000000000010A /* TTSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSManager.swift; sourceTree = "<group>"; };
+		A0000000000000000000010B /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		A0000000000000000000010C /* CoachEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachEngine.swift; sourceTree = "<group>"; };
+		A0000000000000000000010D /* DiscreetCueDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscreetCueDetector.swift; sourceTree = "<group>"; };
+		A0000000000000000000010E /* LanguageDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDetector.swift; sourceTree = "<group>"; };
+		A0000000000000000000010F /* PeopleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleStore.swift; sourceTree = "<group>"; };
+
+		A00000000000000000000201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A00000000000000000000202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A00000000000000000002002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A00000000000000000003000 = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000003001 /* Sources */,
+				A00000000000000000003002 /* Resources */,
+				A00000000000000000003003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+
+		A00000000000000000003001 /* Sources */ = {
+			isa = PBXGroup;
+			path = Sources;
+			sourceTree = "<group>";
+			children = (
+				A00000000000000000000101 /* PepeGrilloMVPApp.swift */,
+				A00000000000000000000102 /* RootView.swift */,
+				A00000000000000000000103 /* GoalSetupView.swift */,
+				A00000000000000000000104 /* LiveSessionView.swift */,
+				A00000000000000000000105 /* SummaryView.swift */,
+				A00000000000000000000106 /* SessionViewModel.swift */,
+				A00000000000000000000107 /* SessionModels.swift */,
+				A00000000000000000000108 /* SettingsModels.swift */,
+				A00000000000000000000109 /* SpeechRecognizer.swift */,
+				A0000000000000000000010A /* TTSManager.swift */,
+				A0000000000000000000010B /* OpenAIClient.swift */,
+				A0000000000000000000010C /* CoachEngine.swift */,
+				A0000000000000000000010D /* DiscreetCueDetector.swift */,
+				A0000000000000000000010E /* LanguageDetector.swift */,
+				A0000000000000000000010F /* PeopleStore.swift */,
+			);
+		};
+
+		A00000000000000000003002 /* Resources */ = {
+			isa = PBXGroup;
+			path = PepeGrillo;
+			sourceTree = "<group>";
+			children = (
+				A00000000000000000000202 /* Assets.xcassets */,
+				A00000000000000000000201 /* Info.plist */,
+			);
+		};
+
+		A00000000000000000003003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000001000 /* PepeGrillo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A00000000000000000004000 /* PepeGrillo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A00000000000000000005000 /* Build configuration list for PBXNativeTarget "PepeGrillo" */;
+			buildPhases = (
+				A00000000000000000002000 /* Sources */,
+				A00000000000000000002001 /* Resources */,
+				A00000000000000000002002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PepeGrillo;
+			productName = PepeGrillo;
+			productReference = A00000000000000000001000 /* PepeGrillo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A00000000000000000006000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A00000000000000000004000 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A00000000000000000005010 /* Build configuration list for PBXProject "PepeGrillo" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A00000000000000000003000;
+			productRefGroup = A00000000000000000003003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A00000000000000000004000 /* PepeGrillo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A00000000000000000002001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A00000000000000000000011 /* Assets.xcassets in Resources */,
+				// Info.plist removed from resources
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A00000000000000000002000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A00000000000000000000001 /* PepeGrilloMVPApp.swift in Sources */,
+				A00000000000000000000002 /* RootView.swift in Sources */,
+				A00000000000000000000003 /* GoalSetupView.swift in Sources */,
+				A00000000000000000000004 /* LiveSessionView.swift in Sources */,
+				A00000000000000000000005 /* SummaryView.swift in Sources */,
+				A00000000000000000000006 /* SessionViewModel.swift in Sources */,
+				A00000000000000000000007 /* SessionModels.swift in Sources */,
+				A00000000000000000000008 /* SettingsModels.swift in Sources */,
+				A00000000000000000000009 /* SpeechRecognizer.swift in Sources */,
+				A0000000000000000000000A /* TTSManager.swift in Sources */,
+				A0000000000000000000000B /* OpenAIClient.swift in Sources */,
+				A0000000000000000000000C /* CoachEngine.swift in Sources */,
+				A0000000000000000000000D /* DiscreetCueDetector.swift in Sources */,
+				A0000000000000000000000E /* LanguageDetector.swift in Sources */,
+				A0000000000000000000000F /* PeopleStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A00000000000000000007000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PepeGrillo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fjdelrio.PepeGrillo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A00000000000000000007001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PepeGrillo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fjdelrio.PepeGrillo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+
+		A00000000000000000007010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_COMPILATION_MODE = singlefile;
+			};
+			name = Debug;
+		};
+		A00000000000000000007011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A00000000000000000005000 /* Build configuration list for PBXNativeTarget "PepeGrillo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000007000 /* Debug */,
+				A00000000000000000007001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A00000000000000000005010 /* Build configuration list for PBXProject "PepeGrillo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000007010 /* Debug */,
+				A00000000000000000007011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = A00000000000000000006000 /* Project object */;
+}

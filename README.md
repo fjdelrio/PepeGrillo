@@ -12,13 +12,18 @@ MVP iOS (SwiftUI) estilo **companion/mentor**:
 - Esto ya permite: capturar audio desde el micrófono seleccionado + reproducir TTS al output (si el usuario eligió los lentes).
 - Si luego quieres acceso a cámara/sensores específicos del device, habría que evaluar el **Meta Wearables Device Access Toolkit** (developer preview) y su disponibilidad.
 
-## Cómo correr
-1) En Xcode: crea un iOS App nuevo (SwiftUI).
-2) Copia los archivos de `Sources/` a tu proyecto.
-3) Añade en Info.plist:
-   - `NSMicrophoneUsageDescription` = "Necesitamos micrófono para escuchar y ayudarte en tiempo real"
-   - `NSSpeechRecognitionUsageDescription` = "Necesitamos transcribir audio para darte sugerencias"
-4) Activa capacidades según necesites (Background Audio opcional si quieres que funcione con pantalla apagada; para MVP puede ser sin background).
+## Cómo correr (Xcode)
+1) Abre el proyecto:
+   - `PepeGrillo.xcodeproj`
+2) Selecciona un simulador (p. ej. cualquier **iPhone** en iOS Simulator).
+3) Build & Run (⌘R).
+
+### Permisos requeridos
+El proyecto ya incluye en `PepeGrillo/Info.plist`:
+- `NSMicrophoneUsageDescription`
+- `NSSpeechRecognitionUsageDescription`
+
+> TODO: Si quieres que funcione con pantalla apagada o en background real, habrá que evaluar Background Modes. Para el MVP en simulador no es necesario.
 
 ## Config (LLM)
 El MVP usa OpenAI **si detecta** `OPENAI_API_KEY` en el environment del scheme de Xcode. Si no existe, cae a modo **mock**.

@@ -26,7 +26,7 @@ final class SessionViewModel: ObservableObject {
     @Published private(set) var summary: SessionSummary? = nil
 
     private let speech = SpeechRecognizer()
-    private let coach = CoachEngine(llm: .auto)
+    private let coach = CoachEngine(llm: LLMClient.auto)
     private let tts = TTSManager()
 
     private var lastSuggestionAt: Date = .distantPast
