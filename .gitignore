@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Xcode
+*.xcworkspace
+*.xcodeproj
+xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# SwiftPM
+.build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Secrets
+.env
