@@ -7,7 +7,8 @@ import AVFoundation
 final class SpeechRecognizer: NSObject, ObservableObject {
     @Published var partialTranscript: String = ""
 
-    private let audioEngine = AVAudioEngine()
+    // Recreate engine on start() to survive route/sample-rate changes (e.g. Bluetooth HFP 16kHz).
+    private var audioEngine = AVAudioEngine()
     private let recognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
@@ -30,14 +31,36 @@ final class SpeechRecognizer: NSObject, ObservableObject {
 
         guard let recognizer, recognizer.isAvailable else { return }
 
+        // Important: Bluetooth headset mic typically uses HFP (often 16kHz).
+        // If the engine is configured for 48kHz and route flips to HFP, AVAudioEngine tap can fail.
         let session = AVAudioSession.sharedInstance()
         do {
+            try session.setActive(false, options: .notifyOthersOnDeactivation)
+
             // .playAndRecord so TTS can output to BT headphones while recording.
-            try session.setCategory(.playAndRecord, mode: .voiceChat, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker, .duckOthers])
+            try session.setCategory(
+                .playAndRecord,
+                mode: .voiceChat,
+                options: [.allowBluetooth, .defaultToSpeaker, .duckOthers]
+            )
+
+            // Prefer Bluetooth HFP input if available.
+            if let bt = session.availableInputs?.first(where: { $0.portType == .bluetoothHFP }) {
+                try session.setPreferredInput(bt)
+                // HFP commonly runs at 16kHz.
+                try session.setPreferredSampleRate(16_000)
+            } else {
+                // Default device mic typically runs at 48kHz.
+                try session.setPreferredSampleRate(48_000)
+            }
+
             try session.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             return
         }
+
+        // Recreate engine AFTER audio session is active, so formats match the current route.
+        audioEngine = AVAudioEngine()
 
         request = SFSpeechAudioBufferRecognitionRequest()
         request?.shouldReportPartialResults = true
