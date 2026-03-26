@@ -1,5 +1,12 @@
 import SwiftUI
 
+// MARK: - Keyboard helpers
+private extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 private struct CapsuleOptionButton: View {
     let title: String
     let isSelected: Bool
@@ -120,8 +127,18 @@ struct GoalSetupView: View {
             }
             .padding(16)
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            hideKeyboard()
+        }
         .scrollContentBackground(.hidden)
         .background(Color.black)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") { hideKeyboard() }
+            }
+        }
     }
 }
