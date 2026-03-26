@@ -145,7 +145,7 @@ final class SessionViewModel: ObservableObject {
 
             // Append summary to person notes (very simple MVP)
             if let id = selectedPersonId, var p = peopleStore.people.first(where: { $0.id == id }) {
-                let stamp = ISO8601DateFormatter().string(from: Date())
+                let stamp = Self.localTimestamp()
                 let addition = "\n\n[Session \(stamp)]\nObjective: \(objective)\nNotes: \(s.notes)\nActionItems: \(s.actionItems.joined(separator: "; "))"
                 p.notes = (p.notes + addition).trimmingCharacters(in: .whitespacesAndNewlines)
                 p.lastUpdated = Date()
@@ -256,6 +256,14 @@ final class SessionViewModel: ObservableObject {
         // For MVP we keep SpeechRecognizer default locale.
         // If you want: create recognizer with explicit locale based on languageMode.
         // Speech framework doesn’t easily swap recognizer mid-stream without restarting.
+    }
+
+    private static func localTimestamp(_ date: Date = Date()) -> String {
+        let df = DateFormatter()
+        df.locale = .current
+        df.timeZone = .current
+        df.dateFormat = "yyyy-MM-dd HH:mm" // local time
+        return df.string(from: date)
     }
 
     private func lastChunk(_ s: String, maxChars: Int) -> String {

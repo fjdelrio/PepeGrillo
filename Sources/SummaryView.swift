@@ -5,6 +5,8 @@ struct SummaryView: View {
 
     var body: some View {
         Form {
+            // Keep Form for fast iteration, but force black/white theme.
+            
             Section("Status") {
                 Text(vm.isListening ? "Listening is ON" : "Listening is OFF")
                 Text("Suggestions generated: \(vm.suggestions.count)")
@@ -34,7 +36,7 @@ struct SummaryView: View {
                     }
                 } else {
                     Text("No summary yet.")
-                        .foregroundStyle(.secondary)
+                        .opacity(0.75)
 
                     Button {
                         vm.generateSummary()
@@ -45,6 +47,9 @@ struct SummaryView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.black)
+        .foregroundStyle(.white)
         .navigationTitle("Summary")
     }
 }
