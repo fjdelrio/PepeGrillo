@@ -18,18 +18,33 @@ struct DiscreetCueDetector {
             return lastQ
         }
 
-        // 2) Cue phrases
         let lowered = tail.lowercased()
+
+        // 2) Cue phrases
         let cues = [
             "quieres saber",
             "quieres que te diga",
             "me puedes decir",
+            "me podrías decir",
+            "puedes decirme",
             "do you know",
             "you want to know",
             "can you tell me",
             "what should i say"
         ]
-        guard cues.contains(where: { lowered.contains($0) }) else { return nil }
+
+        // 3) Interrogative starts (Speech-to-text often omits '?')
+        let interrogativeStarts = [
+            // ES
+            "como ", "cómo ", "que ", "qué ", "cual ", "cuál ", "cuando ", "cuándo ",
+            "donde ", "dónde ", "por que", "por qué", "deberia", "debería", "me conviene",
+            // EN
+            "how ", "what ", "why ", "when ", "where ", "should i", "can i", "could you", "do i"
+        ]
+
+        let hasCue = cues.contains(where: { lowered.contains($0) })
+        let looksLikeQuestion = interrogativeStarts.contains(where: { lowered.trimmingCharacters(in: .whitespacesAndNewlines).hasPrefix($0) })
+        guard hasCue || looksLikeQuestion else { return nil }
 
         // If there's no '?', we attempt to extract the clause after the cue.
         for cue in cues {

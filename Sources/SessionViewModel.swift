@@ -111,6 +111,15 @@ final class SessionViewModel: ObservableObject {
         speech.stop()
     }
 
+    func clearLiveTranscript() {
+        transcript = ""
+        speech.resetTranscript()
+        suggestions = []
+        lastSuggestionAt = .distantPast
+        lastAnswerAt = .distantPast
+        lastAnsweredQuestionFingerprint = ""
+    }
+
     func stopSession() {
         isListening = false
         speech.stop()

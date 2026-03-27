@@ -21,6 +21,17 @@ struct LiveSessionView: View {
 
                     Spacer()
 
+                    Button {
+                        vm.clearLiveTranscript()
+                    } label: {
+                        Text("Clear")
+                            .font(.subheadline.weight(.semibold))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 8)
+                            .overlay(Capsule().stroke(Color.white.opacity(0.7), lineWidth: 1))
+                    }
+                    .buttonStyle(.plain)
+
                     Toggle(isOn: $vm.isListening) {
                         Text(vm.isListening ? "Listening" : "Off")
                             .font(.subheadline)

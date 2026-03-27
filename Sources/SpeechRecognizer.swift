@@ -7,6 +7,12 @@ import AVFoundation
 final class SpeechRecognizer: NSObject, ObservableObject {
     @Published var partialTranscript: String = ""
 
+    func resetTranscript() {
+        DispatchQueue.main.async {
+            self.partialTranscript = ""
+        }
+    }
+
     // Recreate engine on start() to survive route/sample-rate changes (e.g. Bluetooth HFP 16kHz).
     private var audioEngine = AVAudioEngine()
     private let recognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
