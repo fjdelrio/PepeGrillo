@@ -26,8 +26,10 @@ final class SessionViewModel: ObservableObject {
     @Published private(set) var summary: SessionSummary? = nil
 
     private let speech = SpeechRecognizer()
-    private let coach = CoachEngine(llm: LLMClient.auto)
+    private let coach: CoachEngine
     private let tts = TTSManager()
+
+    @Published private(set) var llmLabel: String = ""
 
     private var lastSuggestionAt: Date = .distantPast
     private var lastAnswerAt: Date = .distantPast
@@ -37,6 +39,10 @@ final class SessionViewModel: ObservableObject {
     private var isSessionActive = false
 
     init() {
+        let resolved = LLMClient.resolve()
+        self.coach = CoachEngine(llm: resolved.client)
+        self.llmLabel = resolved.label
+
         // Live transcript stream
         speech.$partialTranscript
             .receive(on: RunLoop.main)

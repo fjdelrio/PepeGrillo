@@ -111,9 +111,17 @@ Output JSON with fields: {"notes": string, "actionItems": [string], "followUps":
 enum LLMClient {
     static let mock: LLMClientProtocol = MockLLMClient()
 
+    struct Resolved {
+        let client: LLMClientProtocol
+        let label: String
+    }
+
     /// Use OpenAI if OPENAI_API_KEY is present; otherwise fall back to mock.
-    static var auto: LLMClientProtocol {
-        (try? OpenAIClient.fromEnvironment()) ?? MockLLMClient()
+    static func resolve() -> Resolved {
+        if let openAI = try? OpenAIClient.fromEnvironment() {
+            return Resolved(client: openAI, label: "OpenAI")
+        }
+        return Resolved(client: MockLLMClient(), label: "Mock")
     }
 }
 

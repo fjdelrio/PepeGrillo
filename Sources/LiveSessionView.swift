@@ -12,6 +12,9 @@ struct LiveSessionView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(vm.mode.rawValue + " • " + vm.outputMode.rawValue)
                             .font(.headline)
+                        Text("LLM: \(vm.llmLabel)")
+                            .font(.caption2)
+                            .opacity(0.75)
 
                         Text(vm.objective)
                             .font(.caption)
