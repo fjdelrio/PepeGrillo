@@ -19,8 +19,11 @@ final class CoachEngine {
         let prompt = """
 You are a real-time conversation companion/mentor.
 
-LANGUAGE:
+LANGUAGE (STRICT):
 \(lang)
+- Write ALL output in that language.
+- Do NOT mix languages.
+- If unsure, default to Spanish.
 
 MODE:
 \(mode.systemHint)
@@ -42,10 +45,13 @@ Return up to \(outputMode.maxBullets) bullets.
 - For Social mode: avoid cringe; keep it witty but tasteful.
 Output JSON with fields: {"title": string, "bullets": [string]}.
 """
-        var s = try await llm.suggestions(prompt: prompt)
-        // Ensure language is carried (MVP)
-        s = CoachSuggestion(bullets: s.bullets, title: s.title, language: language)
-        return s
+        let s = try await llm.suggestions(prompt: prompt)
+
+        // Prefer UI-selected language when explicitly set; otherwise infer from model output.
+        let inferred = LanguageDetector.detect(from: ([s.title] + s.bullets).joined(separator: " "))
+        let resolvedLang = language ?? inferred
+
+        return CoachSuggestion(bullets: s.bullets, title: s.title, language: resolvedLang)
     }
 
     func answer(question: String, objective: String, mode: SessionMode, language: DetectedLanguage?) async throws -> CoachSuggestion {
@@ -54,8 +60,11 @@ Output JSON with fields: {"title": string, "bullets": [string]}.
         let prompt = """
 You are a discreet in-ear assistant.
 
-LANGUAGE:
+LANGUAGE (STRICT):
 \(lang)
+- Write ALL output in that language.
+- Do NOT mix languages.
+- If unsure, default to Spanish.
 
 OBJECTIVE:
 \(objective)
@@ -69,9 +78,12 @@ RULES:
 - If helpful, add 1 follow-up line the user can say next.
 Output JSON with fields: {"title": string, "bullets": [string]}.
 """
-        var s = try await llm.answer(prompt: prompt)
-        s = CoachSuggestion(bullets: s.bullets, title: s.title, language: language)
-        return s
+        let s = try await llm.answer(prompt: prompt)
+
+        let inferred = LanguageDetector.detect(from: ([s.title] + s.bullets).joined(separator: " "))
+        let resolvedLang = language ?? inferred
+
+        return CoachSuggestion(bullets: s.bullets, title: s.title, language: resolvedLang)
     }
 
     func summarize(objective: String, mode: SessionMode, fullTranscript: String) async throws -> SessionSummary {

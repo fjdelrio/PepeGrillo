@@ -174,15 +174,13 @@ final class SessionViewModel: ObservableObject {
         let detectedLang = resolvedConversationLanguage(from: text)
 
         do {
-            var suggestion = try await coach.suggest(
+            let suggestion = try await coach.suggest(
                 objective: objective,
                 mode: mode,
                 recentTranscript: lastChunk(text, maxChars: 900),
                 outputMode: outputMode,
                 language: detectedLang
             )
-            // Ensure TTS always matches conversation language (MVP):
-            suggestion = CoachSuggestion(bullets: suggestion.bullets, title: suggestion.title, language: detectedLang)
             if suggestion.bullets.isEmpty { return }
 
             // Insert newest first, but avoid spamming duplicates.
@@ -222,14 +220,12 @@ final class SessionViewModel: ObservableObject {
         let detectedLang = resolvedConversationLanguage(from: text)
 
         do {
-            var answer = try await coach.answer(
+            let answer = try await coach.answer(
                 question: q,
                 objective: objective,
                 mode: mode,
                 language: detectedLang
             )
-            // Ensure TTS always matches conversation language (MVP):
-            answer = CoachSuggestion(bullets: answer.bullets, title: answer.title, language: detectedLang)
             if answer.bullets.isEmpty { return }
             suggestions.insert(answer, at: 0)
             lastAnswerAt = now

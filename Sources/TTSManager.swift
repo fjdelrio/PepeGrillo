@@ -4,7 +4,7 @@ import AVFoundation
 final class TTSManager {
     private let synth = AVSpeechSynthesizer()
 
-    /// Default: es-MX. If language is provided, we select a matching voice.
+    /// Default: infer from text; fallback to es-MX.
     func speak(_ text: String, language: DetectedLanguage? = nil) {
         guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
 
@@ -21,11 +21,13 @@ final class TTSManager {
         utterance.rate = 0.5
         utterance.volume = 0.9
 
-        // Default to Spanish (Mexico). Switch to English (US) if detected.
+        // Infer language from text if not provided, so voice matches output language.
+        let resolved = language ?? LanguageDetector.detect(from: text)
+
         let bcp47: String
-        switch language {
-        case .en: bcp47 = "en-US"
-        case .es, .none: bcp47 = "es-MX"
+        switch resolved {
+        case .en?: bcp47 = "en-US"
+        case .es?, nil: bcp47 = "es-MX"
         }
         utterance.voice = AVSpeechSynthesisVoice(language: bcp47)
 
